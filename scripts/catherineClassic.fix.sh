@@ -88,3 +88,5 @@ $winebin/wine64 reg add "HKEY_CLASSES_ROOT\\Wow6432Node\\MediaFoundation\\Transf
 $winebin/wine64 reg add "HKEY_CLASSES_ROOT\\Wow6432Node\\MediaFoundation\\Transforms\\2eeb4adf-4578-4d10-bca7-bb955f56320a" /f /t REG_BINARY /v "InputTypes" /d "6175647300001000800000aa00389b716101000000001000800000aa00389b716175647300001000800000aa00389b716201000000001000800000aa00389b71"
 $winebin/wine64 reg add "HKEY_CLASSES_ROOT\\Wow6432Node\\MediaFoundation\\Transforms\\2eeb4adf-4578-4d10-bca7-bb955f56320a" /f /t REG_BINARY /v "OutputTypes" /d "6175647300001000800000aa00389b710300000000001000800000aa00389b716175647300001000800000aa00389b710100000000001000800000aa00389b71"
 $winebin/wine64 reg add "HKEY_CLASSES_ROOT\\Wow6432Node\\MediaFoundation\\Transforms\\Categories\\9ea73fb4-ef7a-4559-8d5d-719d8f0426c7\\2eeb4adf-4578-4d10-bca7-bb955f56320a"
+
+echo "Try playing Catherine Classic now and enjoy!"
