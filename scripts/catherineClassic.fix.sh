@@ -1,5 +1,4 @@
 #!/bin/bash
-#
 # script name: catherineClassic.fix.sh
 # author: GostLy
 #
@@ -42,10 +41,10 @@ gitMethod="HTTPS"
 # *** Edit: steamLib *** to the location where the game is installed
 # If you only have one drive on your PC then most likely you can use the default location
 steamLib=~/.steam/steam # Default Location of steam library
-#steamLib="/mnt/Seagate.500/SteamLibrary" # Example location of steam on another drive
+#steamLib="/mnt/Samsung.500/SteamLibrary" # Example location of steam on another drive
 
 # *** Edit: steamProtonDir *** to the location of the Proton version you intend to use with Catherine Classic;
-steamProtonDir="$steamLib/compatibilitytools.d/Proton-6.1-GE-2"
+steamProtonDir=~/.steam/steam/compatibilitytools.d/Proton-6.1-GE-2
 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 # @@@ NO EDITING REQUIRED BEYOND THIS POINT @@@
@@ -60,16 +59,20 @@ syswow64="$WINEPREFIX/drive_c/windows/syswow64"
 if [ ! -d ~/tmp ]; then
 	mkdir -p ~/tmp
 fi
-cd ~/tmp || exit
-if [ $gitMethod == "SSH" ]; then
-	git clone git@github.com:z0z0z/mf-install.git
-else
-	git clone https://github.com/z0z0z/mf-install.git
+cd ~/tmp
+if [ ! -f ~/tmp/mf-install/mf-install.sh ]; then	
+	if [ $gitMethod == "SSH" ]; then
+		git clone git@github.com:z0z0z/mf-install.git
+	else
+		git clone https://github.com/z0z0z/mf-install.git
+	fi
 fi
-cd mf-install || exit
-PROTON="$steamProtonDir" ./mf-istall.sh -proton
+cd mf-install
+PROTON="$steamProtonDir" ./mf-install.sh -proton
 
 # Download needed DLL files:
+rm "$syswow64/dxva2.dll"
+rm "$syswow64/evr.dll"
 curl -o "$syswow64/dxva2.dll" https://github.com/GostLy/GLib/raw/main/dxva2.dll
 curl -o "$syswow64/evr.dll" https://github.com/GostLy/GLib/raw/main/evr.dll
 curl -o "$syswow64/mp4sdecd.dll" https://github.com/GostLy/GLib/raw/main/mp4sdecd.dll
